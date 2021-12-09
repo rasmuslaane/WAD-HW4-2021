@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Posts</title>
+</head>
+<body>
+
+    <%- include('./partials/navbar.ejs') %>
+    
+    <div class="flex-items">
+        <div class="flex-items-header">
+            <div class="flex-items-avatar">
+                <img src="User.png" alt="User information icon" width="32" height="32"/>
+                <p>Jon Snow</p>
+            </div>
+            <p>Sep 18, 2020 15:16</p>
+        </div>
+        <div class="flex-items-image">
+            <img src="img1.jpeg" alt="User uploaded image" width="100%" height="auto"/>
+        </div>
+        <div class="flex-items-content">
+            <p>I think it's going to rain</p>
+            <button>&#128077;</button>
+        </div>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

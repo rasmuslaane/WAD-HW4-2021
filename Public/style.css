@@ -1,0 +1,272 @@
+* {
+    font-family: 'PT Serif', serif;
+}
+
+body {
+    background-color: #095ca4;
+}
+
+h1 {
+    color: white;
+}
+
+.nav {
+    background-color: whitesmoke;
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+    z-index: 2;
+}
+
+.nav2 {
+    background-color: whitesmoke;
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 8px 24px;
+    z-index: 2;
+}
+
+/* Descendant selector */
+.nav form {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 45vw;
+}
+
+.nav input {
+    padding: 6px;
+    font-size: small;
+    border: 1px solid #d0d0d0;
+    flex-grow: 10;
+}
+
+
+/* Flexbox used */
+.main-flex-container {
+    margin: auto;
+    background-color: whitesmoke;
+    width: 45%;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 104px 4vw 80px;
+}
+
+
+/* class selectors */
+.flex-items {
+    margin: 8px 0px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 24px -4px #adb1b7;
+}
+
+.flex-items-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+}
+
+.flex-items-avatar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flex-items-avatar > p{
+    padding-left: 8px;
+}
+
+.flex-items-content {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 16px;
+    padding: 16px;
+}
+
+.flex-items-image {
+    width: 100%;
+    height: auto;
+}
+
+
+/* Child selector */
+.flex-items-content > button {
+    font-size: 20px;
+    width: 56px;
+    height: 32px;
+    background-color: #225791;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.flex-items-content > button:hover {
+    background: #063662;
+}
+
+.logincontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    flex-flow: column;
+}
+
+.loginform {
+    position: relative;
+    border-radius: 10px;
+    margin: auto;
+    min-height: 400px;
+    min-width: 360px;
+    width: 55vw;
+    height: 55vh;
+    max-height: 480px;
+    max-width: 440px;
+    background-color: white;
+    margin-top: 15vh;
+}
+
+.loginform img {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.loginheader {
+    height: 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: column nowrap;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin: auto;
+    font-size: large;
+}
+
+.fieldset {
+    margin: auto;
+    padding: 20px;
+}
+
+div.loginform input {
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+    border: solid 1px #063662;
+    padding: 5px;
+    color: #063662;
+}
+
+div.loginform a {
+    font-size: small;
+    text-decoration: none;
+}
+
+
+/* Pseudo-element */
+
+input::placeholder {
+    color: #225791;
+    font-size: 1em;
+}
+
+
+/* ID selector */
+
+#submit {
+    margin-top: 20px;
+    border-radius: 3px;
+    background-color: #063662;
+    width: 100px;
+    color: white;
+}
+
+/* Adjacent Sibling Selector */
+input + button {
+    color: white;
+    background: #225791;
+    font-size: small;
+    border: none;
+    padding: 4px 24px;
+    border-radius: 0px 4px 4px 0px;
+    cursor: pointer;
+}
+
+
+/* Pseudo-class */
+input + button:hover {
+    background: #063662;
+}
+
+
+/* General Sibling Selector */
+.flex-items-avatar ~ p {
+    color: #adb1b7;
+    font-size: 12px;
+}
+
+/* Yl7 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+}
+
+/* Yl7 */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-top: 20px;
+    padding: 16px;
+    background-color: #f1f1f1;
+    min-width: 240px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Yl7 */
+.dropdown-content a {
+    color: black;
+    padding: 16px 0px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Yl7 */
+.dropdown-content p {
+    color: black;
+    padding: 8px 0px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Yl7 */
+.dropbtn {
+    background: whitesmoke;
+    display: block;
+    /*padding: 16px;*/
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Yl7 */
+.show {
+    display: block;
+}
+
