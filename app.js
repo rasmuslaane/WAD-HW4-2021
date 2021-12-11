@@ -56,11 +56,6 @@ app.get('/singlepost/:id', async(req, res) => {
     }
 });
 
-
-app.use((req, res) => {
-    res.status(404).render('404', {title: '404 Error'});
-});
-
 app.get('/posts/:id', async(req, res) => {
     try {
         const { id } = req.params;
@@ -95,8 +90,12 @@ app.post('/posts/', async(req, res) => {
         const newpost = await pool.query(
             "INSERT INTO postrecords(name, date, body, likes) values ($1, $2, $3, $4) RETURNING*", [post.name, post.date, post.body, post.likes]
     );
-        res.json( newpost );
+        res.redirect(301, '/posts');
     } catch (err) {
         console.error(err.message);
     }
+});
+
+app.use((req, res) => {
+    res.status(404).render('404', {title: '404 Error'});
 });
