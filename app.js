@@ -32,7 +32,7 @@ app.get('/posts', async(req, res) => {
     try {
         console.log("get all posts from DB");
         const posts =  await pool.query(
-            "SELECT * FROM postrecords"
+            "select * from postrecords order by id desc"
         );
         //res.json(posts.rows);
         res.render('posts', { posts: posts.rows , title: 'Posts page'});
