@@ -23,22 +23,6 @@ app.get('/index', (req, res) => {
     res.redirect(301, '/posts');
 });
 
-// andmebaasist
-app.get('/posts', async(req, res) => {
-    try {
-        console.log("get all posts from DB");
-        const posts =  await pool.query(
-            "SELECT * FROM postrecords"
-        );
-        //res.json(posts.rows);
-        res.render('posts', { posts: posts.rows , title: 'Posts page'});
-    } catch (err) {
-        console.log(err.message);
-    }
-});
-
-
-
 app.get('/addnewpost', (req, res) => {
     res.render('addnewpost', {title: 'Create a post'});
 });
@@ -76,48 +60,63 @@ app.get('/singlepost', (req, res) => {
     res.render('singlepost', {posts: posts, title: 'Single post'});
 });
 
-
-// Single page - hetkel veel KATKI
-app.get('/singlepost/:id', async(req,res)=>{
+// andmebaasist
+app.get('/posts', async(req, res) => {
     try {
-        console.log("received singlepage GET request with ID");
-        const {id} = req.params.id;
-        console.log(id);
-        const posts = await pool.query(
-            "SELECT * FROM postrecords WHERE id=$1",[id]
+        console.log("get all posts from DB");
+        const posts =  await pool.query(
+            "SELECT * FROM postrecords"
         );
-        console.log(posts);
-        res.render('singlepost', { posts: post.rows[0] , title: 'Singlepost page'});
+        //res.json(posts.rows);
+        res.render('posts', { posts: posts.rows , title: 'Posts page'});
     } catch (err) {
         console.log(err.message);
     }
-})
+});
+
+// Single page - hetkel veel KATKI
+app.get('/singlepost/:id', async(req, res) => {
+    try {
+        const id = req.params.id;
+        console.log(req.params.id);
+        console.log("get a single post request has arrived");
+        const posts = await pool.query(
+            "SELECT * FROM postrecords WHERE id = $1", [id]
+        );
+        res.render('singlepost', { posts: posts.rows[0], title: 'Single post' });
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 
 app.use((req, res) => {
     res.status(404).render('404', {title: '404 Error'});
 });
 
-app.get('/posts/:id', async (req, res) => {
+app.get('/posts/:id', async(req, res) => {
     try {
+        const { id } = req.params;
         console.log("get a post request has arrived");
-        const posts = await pool.query(
-            "SELECT * FROM nodetable WHERE id = $1", [id]
+        const Apost = await pool.query(
+            "SELECT * FROM postrecords WHERE id = $1", [id]
         );
-        res.json(posts.rows[0]);
+        res.json(Apost.rows[0]);
     } catch (err) {
         console.error(err.message);
     }
 });
 
-app.delete('/posts/:id', async (req, res) => {
+app.delete('/posts/:id', async(req, res) => {
     try {
-        const {id} = req.params;
+        console.log(req.params);
+        const { id } = req.params;
         const post = req.body;
         console.log("delete a post request has arrived");
-        const deletepost = await pool.query("DELETE FROM nodetable WHERE id = $1", [id]
+        const deletepost = await pool.query(
+            "DELETE FROM postrecords WHERE id = $1", [id]
         );
-        res.json(post);
+        res.redirect('posts');
     } catch (err) {
         console.error(err.message);
     }
