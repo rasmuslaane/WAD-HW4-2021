@@ -18,9 +18,9 @@
                 <div class="flex-items-header">
                     <div class="flex-items-avatar">
                         <% if(posts.dp){ %>
-                            <img src="<%= posts.dp %>" alt="User icon" width="32" height="32"/>
+                            <img src="/<%= posts.dp %>" alt="User icon" width="32" height="32"/>
                         <% } else{ %>
-                            <img src="user.png" alt="User icon" width="32" height="32"/>
+                            <img src="/user.png" alt="User icon" width="32" height="32"/>
                         <% } %>
                         <p><%= posts.name %></p>
                     </div>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="flex-items-image">
                     <% if(posts.image){ %>
-                        <img src="<%= posts.image %>" alt="User uploaded image" width="100%" height="auto"/>
+                        <img src="/<%= posts.image %>" alt="User uploaded image" width="100%" height="auto"/>
                     <% } else{ %>
                     <% } %>
                 </div>

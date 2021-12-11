@@ -27,39 +27,6 @@ app.get('/addnewpost', (req, res) => {
     res.render('addnewpost', {title: 'Create a post'});
 });
 
-app.get('/singlepost', (req, res) => {
-    let posts = [
-        {
-            id: 1,
-            name: "Jon Snow",
-            dp: "user.png",
-            date: "Sep 18, 2020 15:16",
-            image: "img1.jpeg",
-            body: "I think it's going to rain",
-            likes: "1440"
-        },
-        {
-            id: 2,
-            name: "Lorem Ipsum",
-            dp: "wick.png",
-            date: "Feb 22, 2022 22:22",
-            image: "img2.jpeg",
-            body: "I think I'm back",
-            likes: "2022"
-        },
-        {
-            id: 3,
-            name: "Dolor sit amet",
-            dp: "",
-            date: "Apr 5, 2022 23:55",
-            image: "",
-            body: "This post does not have any images. Not for content nor for user display picture",
-            likes: "404"
-        },
-    ];
-    res.render('singlepost', {posts: posts, title: 'Single post'});
-});
-
 // andmebaasist
 app.get('/posts', async(req, res) => {
     try {
@@ -117,6 +84,19 @@ app.delete('/posts/:id', async(req, res) => {
             "DELETE FROM postrecords WHERE id = $1", [id]
         );
         res.redirect('posts');
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+app.post('/posts/', async(req, res) => {
+    try {
+        console.log("a post request has arrived");
+        const post = req.body;
+        const newpost = await pool.query(
+            "INSERT INTO postrecords(name, date, body, likes) values ($1, $2, $3, $4) RETURNING*", [post.name, post.date, post.body, post.likes]
+    );
+        res.json( newpost );
     } catch (err) {
         console.error(err.message);
     }
