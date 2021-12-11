@@ -1,9 +1,17 @@
 const express = require('express');
 const app = express();
+const pool = require('./database');
+const cors = require('cors');
 
 app.set('view engine', 'ejs');
 
-app.listen(3000);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
+
+app.listen(3000,()=>{
+    console.log("Server is listening port 3000")
+});
 
 app.use(express.static('Public'));
 
