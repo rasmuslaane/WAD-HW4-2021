@@ -1,8 +1,8 @@
 const Pool = require('pg').Pool;
 const pool = new Pool({
 user: "postgres",
-password: "SIIA PAROOL",
-database: "SIIA DATABASE NIMI",
+password: "Cdmx73ciJDtR79FhtWPw",
+database: "wadhm4",
 host: "localhost",
 port: "5432"
 });

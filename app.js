@@ -43,6 +43,7 @@ app.get('/addnewpost', (req, res) => {
     res.render('addnewpost', {title: 'Create a post'});
 });
 
+/*
 app.get('/singlepost', (req, res) => {
     let posts = [
         {
@@ -75,6 +76,24 @@ app.get('/singlepost', (req, res) => {
     ];
     res.render('singlepost', {posts: posts, title: 'Single post'});
 });
+*/
+
+// Single page - hetkel veel KATKI
+app.get('/singlepost/:id', async(req,res)=>{
+    try {
+        console.log("received singlepage GET request with ID");
+        const {id} = req.params.id;
+        console.log(id);
+        const posts = await pool.query(
+            "SELECT * FROM postrecords WHERE id=$1",[id]
+        );
+        console.log(posts);
+        res.render('singlepost', { posts: post.rows[0] , title: 'Singlepost page'});
+    } catch (err) {
+        console.log(err.message);
+    }
+})
+
 
 app.use((req, res) => {
     res.status(404).render('404', {title: '404 Error'});
