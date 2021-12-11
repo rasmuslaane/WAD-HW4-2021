@@ -43,7 +43,6 @@ app.get('/addnewpost', (req, res) => {
     res.render('addnewpost', {title: 'Create a post'});
 });
 
-/*
 app.get('/singlepost', (req, res) => {
     let posts = [
         {
@@ -76,7 +75,7 @@ app.get('/singlepost', (req, res) => {
     ];
     res.render('singlepost', {posts: posts, title: 'Single post'});
 });
-*/
+
 
 // Single page - hetkel veel KATKI
 app.get('/singlepost/:id', async(req,res)=>{
