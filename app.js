@@ -17,37 +17,98 @@ app.get('/index', (req, res) => {
 
 app.get('/posts', (req, res) => {
     let posts = [
-        { id:1, name: "Jon Snow", dp:"user.png", date: "Sep 18, 2020 15:16", image: "img1.jpeg", body: "I think it's going to rain", likes: "1440"},
-        { id:2, name: "Lorem Ipsum", dp:"wick.png", date: "Feb 22, 2022 22:22", image: "img2.jpeg", body: "I think I'm back", likes: "2022" },
-        { id:3, name: "Dolor sit amet", dp:"", date: "Apr 5, 2022 23:55", image: "", body: "This post does not have any images. Not for content nor for user display picture", likes: "404" },
+        {
+            id: 1,
+            name: "Jon Snow",
+            dp: "user.png",
+            date: "Sep 18, 2020 15:16",
+            image: "img1.jpeg",
+            body: "I think it's going to rain",
+            likes: "1440"
+        },
+        {
+            id: 2,
+            name: "Lorem Ipsum",
+            dp: "wick.png",
+            date: "Feb 22, 2022 22:22",
+            image: "img2.jpeg",
+            body: "I think I'm back",
+            likes: "2022"
+        },
+        {
+            id: 3,
+            name: "Dolor sit amet",
+            dp: "",
+            date: "Apr 5, 2022 23:55",
+            image: "",
+            body: "This post does not have any images. Not for content nor for user display picture",
+            likes: "404"
+        },
     ];
-    res.render('posts', { posts: posts , title: 'Posts page'});
+    res.render('posts', {posts: posts, title: 'Posts page'});
 });
 
 app.get('/addnewpost', (req, res) => {
-    res.render('addnewpost',{ title: 'Create a post'});
+    res.render('addnewpost', {title: 'Create a post'});
 });
 
 app.get('/singlepost', (req, res) => {
     let posts = [
-        { id:1, name: "Jon Snow", dp:"user.png", date: "Sep 18, 2020 15:16", image: "img1.jpeg", body: "I think it's going to rain", likes: "1440"},
-        { id:2, name: "Lorem Ipsum", dp:"wick.png", date: "Feb 22, 2022 22:22", image: "img2.jpeg", body: "I think I'm back", likes: "2022" },
-        { id:3, name: "Dolor sit amet", dp:"", date: "Apr 5, 2022 23:55", image: "", body: "This post does not have any images. Not for content nor for user display picture", likes: "404" },
+        {
+            id: 1,
+            name: "Jon Snow",
+            dp: "user.png",
+            date: "Sep 18, 2020 15:16",
+            image: "img1.jpeg",
+            body: "I think it's going to rain",
+            likes: "1440"
+        },
+        {
+            id: 2,
+            name: "Lorem Ipsum",
+            dp: "wick.png",
+            date: "Feb 22, 2022 22:22",
+            image: "img2.jpeg",
+            body: "I think I'm back",
+            likes: "2022"
+        },
+        {
+            id: 3,
+            name: "Dolor sit amet",
+            dp: "",
+            date: "Apr 5, 2022 23:55",
+            image: "",
+            body: "This post does not have any images. Not for content nor for user display picture",
+            likes: "404"
+        },
     ];
-    res.render('singlepost', { posts: posts , title: 'Single post'});
+    res.render('singlepost', {posts: posts, title: 'Single post'});
 });
 
 app.use((req, res) => {
-    res.status(404).render('404',{ title: '404 Error'});
+    res.status(404).render('404', {title: '404 Error'});
 });
 
-app.get('/posts/:id', async(req, res) => {
+app.get('/posts/:id', async (req, res) => {
     try {
         console.log("get a post request has arrived");
         const posts = await pool.query(
             "SELECT * FROM nodetable WHERE id = $1", [id]
         );
         res.json(posts.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+app.delete('/posts/:id', async (req, res) => {
+    try {
+        const {id} = req.params;
+        const post = req.body;
+        console.log("delete a post request has arrived");
+        const deletepost = await pool.query("DELETE FROM nodetable WHERE id = $1", [id]
+        );
+        res.json(post);
     } catch (err) {
         console.error(err.message);
     }
