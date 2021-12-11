@@ -40,3 +40,15 @@ app.get('/singlepost', (req, res) => {
 app.use((req, res) => {
     res.status(404).render('404',{ title: '404 Error'});
 });
+
+app.get('/posts/:id', async(req, res) => {
+    try {
+        console.log("get a post request has arrived");
+        const posts = await pool.query(
+            "SELECT * FROM nodetable WHERE id = $1", [id]
+        );
+        res.json(posts.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+});

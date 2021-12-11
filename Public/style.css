@@ -1,5 +1,6 @@
 * {
     font-family: 'PT Serif', serif;
+    text-decoration: none;
 }
 
 body {
@@ -155,6 +156,23 @@ a > button {
 
 a > button:hover {
     background: #063662;
+}
+
+.container{
+    position: relative;
+}
+
+.btn-white {
+    display: block;
+    color: #063662;
+    background-color: whitesmoke;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration-style: unset;
+}
+
+.btn-white:hover {
+    background: white;
 }
 
 .logincontainer {
