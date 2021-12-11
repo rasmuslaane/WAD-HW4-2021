@@ -96,6 +96,31 @@ app.post('/posts/', async(req, res) => {
     }
 });
 
+// lets read the number of likes, increase by one and write back to the database
+app.get('/likes/:id', async (req,res)=>{
+    try{
+        console.log("Changing the LIKE numbers request received");
+        const {id} = req.params;
+        
+        //not really needed - for information only
+        const initialLikes = await pool.query(
+            "SELECT likes FROM postrecords WHERE id=$1",[id]
+        );
+        
+        let likes = parseInt(initialLikes.rows[0]['likes']);
+        likes+=1;
+        console.log('New # of likes: '+likes);
+        
+        const result = await pool.query(
+             "UPDATE postrecords SET likes = likes + 1 WHERE id=$1 RETURNING*",[id]
+        );
+
+        res.json(parseInt(initialLikes.rows[0]['likes']));
+    } catch (err){
+        console.log(err.message);
+    }
+});
+
 app.use((req, res) => {
     res.status(404).render('404', {title: '404 Error'});
 });
