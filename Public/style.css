@@ -72,14 +72,14 @@ h1 {
     width: 45%;
     display: flex;
     flex-flow: column nowrap;
-    padding: 3vw 4vw 80px;
+    padding: 3vw 4vw 4vw;
     position: relative;
     border-radius: 4px;
+    gap: 16px;
 }
 
 
 .flex-items {
-    margin: 8px 0px;
     border-radius: 8px;
     box-shadow: 0px 4px 24px -4px #adb1b7;
 }
@@ -136,7 +136,7 @@ h1 {
 }
 
 .flex-items-avatar > button:disabled {
-    background: #646c80;
+    background: #a0a0a0;
 }
 
 

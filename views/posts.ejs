@@ -17,7 +17,7 @@
     <% if(typeof posts == 'object' && posts.length > 0){ %>
 
         <% posts.forEach(post => { %>
-            <div class="flex-items">
+            <a href="/singlepost"><div class="flex-items">
                 <div class="flex-items-header">
                     <div class="flex-items-avatar">
                         <% if(post.dp){ %>
@@ -43,13 +43,14 @@
                     </div>
 
                 </div>
-            </div>
+            </div></a>
         <% }) %>
 
     <% } else{ %>
         <h2>You did not post anything</h2>
     <% } %>
 </div>
+
 
 <%- include('./partials/footer.ejs') %>
 </body>
