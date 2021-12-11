@@ -80,12 +80,16 @@ h1 {
 .flex-items-avatar {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .flex-items-avatar > p{
     padding-left: 8px;
+}
+
+.w-40{
+    width:40px;
 }
 
 .flex-items-content {
@@ -102,7 +106,7 @@ h1 {
 
 
 /* Child selector */
-.flex-items-content > button {
+.flex-items-avatar > button {
     font-size: 20px;
     width: 56px;
     height: 32px;
