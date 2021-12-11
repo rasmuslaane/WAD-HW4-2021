@@ -15,38 +15,21 @@ app.get('/index', (req, res) => {
     res.redirect(301, '/posts');
 });
 
-app.get('/posts', (req, res) => {
-    let posts = [
-        {
-            id: 1,
-            name: "Jon Snow",
-            dp: "user.png",
-            date: "Sep 18, 2020 15:16",
-            image: "img1.jpeg",
-            body: "I think it's going to rain",
-            likes: "1440"
-        },
-        {
-            id: 2,
-            name: "Lorem Ipsum",
-            dp: "wick.png",
-            date: "Feb 22, 2022 22:22",
-            image: "img2.jpeg",
-            body: "I think I'm back",
-            likes: "2022"
-        },
-        {
-            id: 3,
-            name: "Dolor sit amet",
-            dp: "",
-            date: "Apr 5, 2022 23:55",
-            image: "",
-            body: "This post does not have any images. Not for content nor for user display picture",
-            likes: "404"
-        },
-    ];
-    res.render('posts', {posts: posts, title: 'Posts page'});
+// andmebaasist
+app.get('/posts', async(req, res) => {
+    try {
+        console.log("get all posts from DB");
+        const posts =  await pool.query(
+            "SELECT * FROM postrecords"
+        );
+        //res.json(posts.rows);
+        res.render('posts', { posts: posts.rows , title: 'Posts page'});
+    } catch (err) {
+        console.log(err.message);
+    }
 });
+
+
 
 app.get('/addnewpost', (req, res) => {
     res.render('addnewpost', {title: 'Create a post'});
