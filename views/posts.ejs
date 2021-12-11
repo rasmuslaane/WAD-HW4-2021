@@ -12,21 +12,27 @@
 
 <%- include('./partials/navbar.ejs') %>
 
+<div class="main-flex-container">
+
+<% posts.forEach(post => { %>
 <div class="flex-items">
     <div class="flex-items-header">
         <div class="flex-items-avatar">
-            <img src="User.png" alt="User information icon" width="32" height="32"/>
-            <p>Jon Snow</p>
+            <img src="<%= post.dp %>" alt="User icon" width="32" height="32"/>
+            <p><%= post.name %></p>
         </div>
-        <p>Sep 18, 2020 15:16</p>
+        <p><%= post.date %></p>
     </div>
     <div class="flex-items-image">
-        <img src="img1.jpeg" alt="User uploaded image" width="100%" height="auto"/>
+        <img src="<%= post.image %>" alt="User uploaded image" width="100%" height="auto"/>
     </div>
     <div class="flex-items-content">
-        <p>I think it's going to rain</p>
+        <p><%= post.body %></p>
         <button>&#128077;</button>
     </div>
+</div>
+<% }) %>
+
 </div>
 
 <%- include('./partials/footer.ejs') %>
