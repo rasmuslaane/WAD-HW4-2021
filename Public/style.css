@@ -40,6 +40,16 @@ h1 {
     z-index: 2;
 }
 
+.nav2 > a {
+    color: #0055aa;
+    text-decoration: none;
+    line-height: 200%;
+}
+
+.nav2 > a:hover{
+    color: #4b9cfa;
+}
+
 /* Descendant selector */
 .nav form {
     display: flex;
@@ -121,8 +131,12 @@ h1 {
     cursor: pointer;
 }
 
-.flex-items-content > button:hover {
+.flex-items-avatar > button:hover {
     background: #063662;
+}
+
+.flex-items-avatar > button:disabled {
+    background: #a0a0a0;
 }
 
 
