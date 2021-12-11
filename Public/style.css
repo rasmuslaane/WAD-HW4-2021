@@ -10,6 +10,7 @@ h1 {
     color: #063662;
     font-size: 32px;
     padding-top: 24px;
+    padding-bottom: 24px;
 }
 
 .nav {
@@ -121,6 +122,24 @@ h1 {
 }
 
 .flex-items-content > button:hover {
+    background: #063662;
+}
+
+
+a > button {
+    font-size: 16px;
+    color: whitesmoke;
+    width: 160px;
+    height: 40px;
+    background-color: #225791;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top:40px;
+    text-decoration: none;
+}
+
+a > button:hover {
     background: #063662;
 }
 
@@ -279,6 +298,7 @@ footer {
     padding: 16px 24px 40px 24px;
     color: #efefef;
     margin-top: 80px;
+    bottom: 0;
 }
 
 .contact-title {
