@@ -8,25 +8,25 @@ app.listen(3000);
 app.use(express.static('Public'));
 
 app.get('/', (req, res) => {
-res.render('index');
+    res.render('index');
 });
 
 app.get('/index', (req, res) => {
-res.render('index');
+    res.render('index');
 });
 
 app.get('/posts', (req, res) => {
-res.render('posts');
+    res.render('posts');
 });
 
 app.get('/addnewpost', (req, res) => {
-res.render('addnewpost');
+    res.render('addnewpost');
 });
 
 app.get('/singlepost', (req, res) => {
-res.render('singlepost');
+    res.render('singlepost');
 });
 
 app.use((req, res) => {
-res.status(404).render('404');
+    res.status(404).render('404');
 });
