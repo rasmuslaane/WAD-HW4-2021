@@ -102,6 +102,7 @@ h1 {
 
 .flex-items-avatar > p{
     padding-left: 8px;
+    color:black;
 }
 
 .w-40{
@@ -141,7 +142,7 @@ h1 {
 }
 
 
-a > button {
+.btn-blue {
     font-size: 16px;
     color: whitesmoke;
     width: 160px;
@@ -168,7 +169,13 @@ a > button:hover {
     background-color: whitesmoke;
     margin-left: auto;
     margin-right: auto;
-    text-decoration-style: unset;
+    font-size: 16px;
+    width: 160px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top:40px;
 }
 
 .btn-white:hover {
@@ -349,6 +356,7 @@ footer {
 
 .flex-items-content > p {
     line-height: 130%;
+    color: black;
 }
 
 .left16 {
@@ -385,4 +393,11 @@ h5 {
 
 .links > a:hover{
     color: #bbdbff;
+}
+
+.newpost {
+    width: 100%;
+    padding: 8px 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
 }

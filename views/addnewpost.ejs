@@ -11,6 +11,24 @@
 
 <%- include('./partials/navbar.ejs') %>
 
+<div class="main-flex-container">
+
+    <div class="create-post">
+        <form action="/posts" method="POST">
+            <label for="name">Poster name:</label>
+            <input class="newpost" type="text" id="name" name="name" required><br><br>
+            <label for="date">Post datetime:</label>
+            <input class="newpost"type="text" id="date" name="date" required><br><br>
+            <label for="body">Post body:</label>
+            <input class="newpost" type="text" id="body" name="body" required><br><br>
+            <label for="likes">Initial likes:</label>
+            <input class="newpost" type="text" id="likes" name="likes"></textarea><br><br>
+            <button class="btn-blue">Submit</button>
+        </form>
+    </div>
+
+</div>
+
 <%- include('./partials/footer.ejs') %>
 
 </body>
