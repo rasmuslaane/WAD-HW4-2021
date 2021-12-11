@@ -315,6 +315,10 @@ footer {
     line-height: 130%;
 }
 
+.flex-items-content > p {
+    line-height: 130%;
+}
+
 .left16 {
     padding-left: 16px;
 }

@@ -20,13 +20,20 @@
             <div class="flex-items">
                 <div class="flex-items-header">
                     <div class="flex-items-avatar">
-                        <img src="<%= post.dp %>" alt="User icon" width="32" height="32"/>
+                        <% if(post.dp){ %>
+                            <img src="<%= post.dp %>" alt="User icon" width="32" height="32"/>
+                        <% } else{ %>
+                            <img src="user.png" alt="User icon" width="32" height="32"/>
+                        <% } %>
                         <p><%= post.name %></p>
                     </div>
                     <p><%= post.date %></p>
                 </div>
                 <div class="flex-items-image">
-                    <img src="<%= post.image %>" alt="User uploaded image" width="100%" height="auto"/>
+                    <% if(post.image){ %>
+                        <img src="<%= post.image %>" alt="User uploaded image" width="100%" height="auto"/>
+                    <% } else{ %>
+                    <% } %>
                 </div>
                 <div class="flex-items-content">
                     <p><%= post.body %></p>
