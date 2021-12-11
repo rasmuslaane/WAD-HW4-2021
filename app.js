@@ -76,14 +76,13 @@ app.get('/posts/:id', async(req, res) => {
 
 app.delete('/posts/:id', async(req, res) => {
     try {
-        console.log(req.params);
         const { id } = req.params;
         const post = req.body;
         console.log("delete a post request has arrived");
         const deletepost = await pool.query(
             "DELETE FROM postrecords WHERE id = $1", [id]
         );
-        res.redirect('posts');
+        res.json(post);
     } catch (err) {
         console.error(err.message);
     }
