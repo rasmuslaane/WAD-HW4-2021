@@ -8,11 +8,11 @@ app.listen(3000);
 app.use(express.static('Public'));
 
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Landing page'});
+    res.redirect(301, '/posts');
 });
 
 app.get('/index', (req, res) => {
-    res.render('index',{ title: 'Landing page'});
+    res.redirect(301, '/posts');
 });
 
 app.get('/posts', (req, res) => {
