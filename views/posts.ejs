@@ -17,7 +17,7 @@
     <% if(typeof posts == 'object' && posts.length > 0){ %>
 
         <% posts.forEach(post => { %>
-            <a href="/singlepost">
+            <a class="singlepost" href="/singlepost/<%= post.id %>">
                 <div class="flex-items">
                     <div class="flex-items-header">
                         <div class="flex-items-avatar">
