@@ -41,7 +41,6 @@ app.get('/posts', async(req, res) => {
     }
 });
 
-// Single page - hetkel veel KATKI
 app.get('/singlepost/:id', async(req, res) => {
     try {
         const id = req.params.id;
@@ -101,16 +100,16 @@ app.get('/likes/:id', async (req,res)=>{
     try{
         console.log("Changing the LIKE numbers request received");
         const {id} = req.params;
-        
+
         //not really needed - for information only
         const initialLikes = await pool.query(
             "SELECT likes FROM postrecords WHERE id=$1",[id]
         );
-        
+
         let likes = parseInt(initialLikes.rows[0]['likes']);
         likes+=1;
         console.log('New # of likes: '+likes);
-        
+
         const result = await pool.query(
              "UPDATE postrecords SET likes = likes + 1 WHERE id=$1 RETURNING*",[id]
         );

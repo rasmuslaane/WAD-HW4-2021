@@ -17,7 +17,6 @@
     <% if(typeof posts == 'object' && posts.length > 0){ %>
 
         <% posts.forEach(post => { %>
-            <a class="singlepost" href="/singlepost/<%= post.id %>">
             <div class="flex-items">
                 <div class="flex-items-header">
                     <div class="flex-items-avatar">
@@ -37,17 +36,20 @@
                     <% } %>
                 </div>
                 <div class="flex-items-content">
-                    <p>
-                        <%= post.body %>
+                    <p><a class="singlepost" href="/singlepost/<%= post.id %>">
+                            <%= post.body %>
+                        </a>
                     </p>
                     <div class="flex-items-avatar">
-                        <button onclick="this.disabled=true;">&#128077;</button>
+                        <button class="like" id="buttonid<%= post.id %>" data-like="<%= post.id %>"
+                                onclick="updateLikes(this)">&#128077;
+                        </button>
                         <p class="w-40" id="<%= post.id %>"><%= post.likes %></p>
                     </div>
 
                 </div>
             </div>
-            </a>
+
 
         <% }) %>
 
@@ -58,5 +60,27 @@
 
 
 <%- include('./partials/footer.ejs') %>
+
+<script>
+
+    // üritasin vahepeal siia sisse panna, sest siit kaudu saab posts.id kaasa panna vähemalt
+    function updateLikes(el) {
+        el.disabled = true;
+        el.nextElementSibling.innerHTML = parseInt(el.nextElementSibling.innerHTML) + 1;
+    }
+
+    const likereq = document.querySelector('#buttonid<%- posts.id %>');
+    likereq.addEventListener('click', (e) => {
+        console.log("Like button was pressed")
+        const endpoint = `/likes/${likereq.dataset.like}`;
+        fetch(endpoint, {
+            method: 'GET',
+        })
+    });
+
+
+
+
+</script>
 </body>
 </html>

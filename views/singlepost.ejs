@@ -35,7 +35,7 @@
                 <div class="flex-items-content">
                     <p><%= posts.body %></p>
                     <div class="flex-items-avatar">
-                        <button id="buttonid<%= posts.id %>" data-like="<%= posts.id %>" onclick="this.disabled=true;">&#128077;</button>
+                        <button class="like" id="buttonid<%= posts.id %>" data-like="<%= posts.id %>" onclick="updateLikes()">&#128077;</button>
                         <p class="w-40" id="<%= posts.id %>"><%= posts.likes %></p>
                     </div>
 
@@ -45,7 +45,16 @@
 
 <a class="delete" data-del="<%= posts.id %>"><button class="btn-white">Delete post</button></a>
 
+<%- include('./partials/footer.ejs') %>
+
 <script>
+
+    function updateLikes()
+    {
+        document.getElementById("buttonid<%= posts.id %>").disabled=true;
+        document.getElementById("<%= posts.id %>").innerHTML = <%= posts.likes %>+1;
+    }
+
     const delreq = document.querySelector('a.delete');
     delreq.addEventListener('click', (e) => {
         const endpoint = `/posts/${delreq.dataset.del}`;
@@ -54,20 +63,15 @@
         }).then(window.location.href = '/posts')
     });
 
-    /* 
-    //if the button is pressed the likes+1 request is initiated
-    const likereq = document.querySelector('button #buttonid<%- posts.id %>');
-    likereq.addEventListener('click', (e)=>{
-        console.log("Like button was pressed");
+    const likereq = document.querySelector('#buttonid<%- posts.id %>');
+    likereq.addEventListener('click', (e) => {
+        console.log("Like button was pressed")
         const endpoint = `/likes/${likereq.dataset.like}`;
         fetch(endpoint, {
             method: 'GET',
-        }).then(window.location.href='/singlepage/<%- posts.id %>')
+        })
     });
-    */
-    
-</script>
 
-<%- include('./partials/footer.ejs') %>
+</script>
 </body>
 </html>

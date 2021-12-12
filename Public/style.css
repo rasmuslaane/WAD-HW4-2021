@@ -79,10 +79,19 @@ h1 {
     gap: 16px;
 }
 
+.flex-items-content p a::after{
+    content: '';
+    position:absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
 
 .flex-items {
     border-radius: 8px;
     box-shadow: 0px 4px 24px -4px #adb1b7;
+    position:relative;
 }
 
 .flex-items-header {
@@ -131,6 +140,7 @@ h1 {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    position: relative;
 }
 
 .flex-items-avatar > button:hover {
@@ -358,6 +368,12 @@ footer {
 .flex-items-content > p {
     line-height: 130%;
     color: black;
+}
+
+p > a:-webkit-any-link {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .left16 {
