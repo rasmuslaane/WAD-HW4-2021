@@ -36,7 +36,7 @@
                     <p><%= posts.body %></p>
                     <div class="flex-items-avatar">
                         <button onclick="this.disabled=true;">&#128077;</button>
-                        <p class="w-40"><%= posts.likes %></p>
+                        <p class="w-40" id="<%= posts.id %>"><%= posts.likes %></p>
                     </div>
 
                 </div>
@@ -53,6 +53,17 @@
             method: 'DELETE',
         }).then(window.location.href = '/posts')
     });
+
+    /* if the button is pressed the likes+1 request is initiated
+    const likereq = document.querySelector('button#'<%- posts.id %>);
+    likereq.addEventListener('click', (e)=>{
+        const endpoint = `/likes/${likereq.dataset.like}`;
+        fetch(endpoint, {
+            method: 'GET',
+        })
+    });
+    */
+    
 </script>
 
 <%- include('./partials/footer.ejs') %>
