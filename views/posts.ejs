@@ -14,8 +14,8 @@
 <%- include('./partials/navbar.ejs') %>
 
 <div class="main-flex-container">
-    <% if(typeof posts == 'object' && posts.length > 0){ %>
 
+    <% if(typeof posts == 'object' && posts.length > 0){ %>
         <% posts.forEach(post => { %>
             <div class="flex-items">
                 <div class="flex-items-header">
@@ -69,14 +69,15 @@
         el.nextElementSibling.innerHTML = parseInt(el.nextElementSibling.innerHTML) + 1;
     }
 
-    const likereq = document.querySelector('#buttonid<%- posts.id %>');
-    likereq.addEventListener('click', (e) => {
+    <% posts.forEach(post => { %>
+    document.querySelector('#buttonid<%- post.id %>').addEventListener('click', (e) => {
         console.log("Like button was pressed")
-        const endpoint = `/likes/${likereq.dataset.like}`;
+        const endpoint = `/likes/${document.querySelector('#buttonid<%- post.id %>').dataset.like}`;
         fetch(endpoint, {
             method: 'GET',
         })
     });
+    <% }) %>
 
 
 
