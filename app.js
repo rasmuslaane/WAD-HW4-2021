@@ -13,8 +13,11 @@ app.listen(3000,()=>{
     console.log("Server is listening port 3000")
 });
 
+//to make static files accessible
 app.use(express.static('Public'));
 
+
+// because there is no data from database- it is redirected to /posts view
 app.get('/', (req, res) => {
     res.redirect(301, '/posts');
 });
@@ -27,12 +30,12 @@ app.get('/addnewpost', (req, res) => {
     res.render('addnewpost', {title: 'Create a post'});
 });
 
-// andmebaasist
+// query for requesting all the posts and rendering the data 
 app.get('/posts', async(req, res) => {
     try {
         console.log("get all posts from DB");
         const posts =  await pool.query(
-            "select * from postrecords order by id desc"
+            "SELECT * FROM postrecords order by id desc"
         );
         //res.json(posts.rows);
         res.render('posts', { posts: posts.rows , title: 'Posts page'});
@@ -41,6 +44,7 @@ app.get('/posts', async(req, res) => {
     }
 });
 
+// for quering one post specified by id
 app.get('/singlepost/:id', async(req, res) => {
     try {
         const id = req.params.id;
@@ -55,6 +59,7 @@ app.get('/singlepost/:id', async(req, res) => {
     }
 });
 
+/*
 app.get('/posts/:id', async(req, res) => {
     try {
         const { id } = req.params;
@@ -67,7 +72,9 @@ app.get('/posts/:id', async(req, res) => {
         console.error(err.message);
     }
 });
+*/
 
+// for deleting posts by one - specified with id
 app.delete('/posts/:id', async(req, res) => {
     try {
         const { id } = req.params;
@@ -101,7 +108,7 @@ app.get('/likes/:id', async (req,res)=>{
         console.log("Changing the LIKE numbers request received");
         const {id} = req.params;
 
-        //not really needed - for information only
+        //not really needed if you don't want to return with response
         const initialLikes = await pool.query(
             "SELECT likes FROM postrecords WHERE id=$1",[id]
         );
@@ -113,13 +120,13 @@ app.get('/likes/:id', async (req,res)=>{
         const result = await pool.query(
              "UPDATE postrecords SET likes = likes + 1 WHERE id=$1 RETURNING*",[id]
         );
-
         res.json(parseInt(initialLikes.rows[0]['likes']));
     } catch (err){
         console.log(err.message);
     }
 });
 
+// if above isn't anything better - the 404 is triggered
 app.use((req, res) => {
     res.status(404).render('404', {title: '404 Error'});
 });

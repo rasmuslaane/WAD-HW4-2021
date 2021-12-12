@@ -10,11 +10,10 @@
     </title>
 </head>
 <body>
-
+   
 <%- include('./partials/navbar.ejs') %>
 
 <div class="main-flex-container">
-
     <% if(typeof posts == 'object' && posts.length > 0){ %>
         <% posts.forEach(post => { %>
             <div class="flex-items">
@@ -63,12 +62,13 @@
 
 <script>
 
-    // üritasin vahepeal siia sisse panna, sest siit kaudu saab posts.id kaasa panna vähemalt
+    // front-end handling to increase # of likes by 1 and then disabling the like button
     function updateLikes(el) {
         el.disabled = true;
         el.nextElementSibling.innerHTML = parseInt(el.nextElementSibling.innerHTML) + 1;
     }
 
+    // loop for generating eventlisteners for all LIKE buttons to make GET query to backend: host:port/likes/:postId
     <% posts.forEach(post => { %>
     document.querySelector('#buttonid<%- post.id %>').addEventListener('click', (e) => {
         console.log("Like button was pressed")
@@ -78,8 +78,6 @@
         })
     });
     <% }) %>
-
-
 
 
 </script>

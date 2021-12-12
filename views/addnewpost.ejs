@@ -16,13 +16,13 @@
     <div class="create-post">
         <form action="/posts" method="POST">
             <label for="name">Poster name:</label>
-            <input class="newpost" type="text" id="name" name="name" required><br><br>
+            <input class="newpost" type="text" id="name" name="name" placeholder="Insert your name" required><br><br>
             <label for="date">Post datetime:</label>
-            <input class="newpost"type="text" id="date" name="date" required><br><br>
+            <input class="newpost"type="text" id="date" name="date" placeholder="DD/MM/YYYY HH:MM" required><br><br>
             <label for="body">Post body:</label>
-            <input class="newpost" type="text" id="body" name="body" required><br><br>
+            <input class="newpost" type="text" id="body" name="body" placeholder="Post body" required><br><br>
             <label for="likes">Initial likes:</label>
-            <input class="newpost" type="text" id="likes" name="likes"></textarea><br><br>
+            <input class="newpost" type="text" id="likes" name="likes" value="0"><br><br>
             <button class="btn-blue">Submit</button>
         </form>
     </div>
