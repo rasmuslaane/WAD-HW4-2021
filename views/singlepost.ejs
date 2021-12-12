@@ -35,7 +35,7 @@
                 <div class="flex-items-content">
                     <p><%= posts.body %></p>
                     <div class="flex-items-avatar">
-                        <button onclick="this.disabled=true;">&#128077;</button>
+                        <button id="buttonid<%= posts.id %>" data-like="<%= posts.id %>" onclick="this.disabled=true;">&#128077;</button>
                         <p class="w-40" id="<%= posts.id %>"><%= posts.likes %></p>
                     </div>
 
@@ -54,13 +54,15 @@
         }).then(window.location.href = '/posts')
     });
 
-    /* if the button is pressed the likes+1 request is initiated
-    const likereq = document.querySelector('button#'<%- posts.id %>);
+    /* 
+    //if the button is pressed the likes+1 request is initiated
+    const likereq = document.querySelector('button #buttonid<%- posts.id %>');
     likereq.addEventListener('click', (e)=>{
+        console.log("Like button was pressed");
         const endpoint = `/likes/${likereq.dataset.like}`;
         fetch(endpoint, {
             method: 'GET',
-        })
+        }).then(window.location.href='/singlepage/<%- posts.id %>')
     });
     */
     
